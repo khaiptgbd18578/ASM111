@@ -1,0 +1,29 @@
+﻿@model ICollection<Customer>
+
+<div class="container text-center mt-3">
+    <table class="table table-bordered">
+        <tr>
+            <th colspan="3" class="h3 bg-light text-success">Customer</th>
+            <th class="col-md-4">
+                <a class="btn btn-primary" asp-controller="Mobile" asp-action="Create">
+                    Add
+                </a>
+            </th>
+        </tr>
+        <tr>
+            <th>Customer Id</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Address</th>
+        </tr>
+        @foreach (var customer in Model)
+        {
+            <tr>
+                <td>@customer.Id</td>
+                <td>@customer.Name</td>
+                <td>@customer.Email</td>
+                <td>@customer.Address</td>
+            </tr>
+        }
+    </table>
+</div>
