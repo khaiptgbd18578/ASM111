@@ -93,10 +93,19 @@ namespace Asm1670.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("Amount")
+                    b.Property<int>("BookId")
                         .HasColumnType("int");
 
-                    b.Property<int>("BookId")
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("OrderDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<double>("OrderPrice")
+                        .HasColumnType("float");
+
+                    b.Property<int>("OrderQuantity")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -109,20 +118,29 @@ namespace Asm1670.Migrations
                         new
                         {
                             Id = 1,
-                            Amount = 3,
-                            BookId = 1
+                            BookId = 1,
+                            Email = "cart@gmail.com",
+                            OrderDate = new DateTime(2022, 8, 20, 21, 8, 33, 386, DateTimeKind.Local).AddTicks(4806),
+                            OrderPrice = 12.0,
+                            OrderQuantity = 5
                         },
                         new
                         {
                             Id = 2,
-                            Amount = 3,
-                            BookId = 2
+                            BookId = 2,
+                            Email = "cart@gmail.com",
+                            OrderDate = new DateTime(2022, 8, 20, 21, 8, 33, 387, DateTimeKind.Local).AddTicks(2161),
+                            OrderPrice = 12.0,
+                            OrderQuantity = 5
                         },
                         new
                         {
                             Id = 3,
-                            Amount = 3,
-                            BookId = 3
+                            BookId = 3,
+                            Email = "cart@gmail.com",
+                            OrderDate = new DateTime(2022, 8, 20, 21, 8, 33, 387, DateTimeKind.Local).AddTicks(2198),
+                            OrderPrice = 12.0,
+                            OrderQuantity = 5
                         });
                 });
 
@@ -203,21 +221,21 @@ namespace Asm1670.Migrations
                         new
                         {
                             Id = "1",
-                            ConcurrencyStamp = "b2dc12f7-bc4f-4b30-b098-d0e9283a398b",
+                            ConcurrencyStamp = "37f36d86-1c2a-444f-87bc-8639f302150b",
                             Name = "Admin",
                             NormalizedName = "Admin"
                         },
                         new
                         {
                             Id = "2",
-                            ConcurrencyStamp = "e60ca2b4-8218-4f35-adf1-8ee86bb3f844",
+                            ConcurrencyStamp = "87da4c73-64b8-4d9f-9b61-00d2f0562ca2",
                             Name = "Customer",
                             NormalizedName = "Customer"
                         },
                         new
                         {
                             Id = "3",
-                            ConcurrencyStamp = "e3f2b5d6-bbc5-47ae-9374-f7fed4d61e2d",
+                            ConcurrencyStamp = "be16d06d-e619-40e6-bc0e-19923dd15944",
                             Name = "Store Owner",
                             NormalizedName = "Store Owner"
                         });
@@ -316,14 +334,14 @@ namespace Asm1670.Migrations
                         {
                             Id = "1",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "4beed019-fa39-4812-944f-d3bf4193f74d",
+                            ConcurrencyStamp = "d6908617-fe01-42c9-bb97-8364d8a85cd1",
                             Email = "admin@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedUserName = "admin@gmail.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAEEG+ka15yzXEFvxnf1D5aQJef8nmBsPsudrXtqtQ1JHWnB6kGdbmaGJsSRI11TXKog==",
+                            PasswordHash = "AQAAAAEAACcQAAAAELbV0QO4lMMk3mza7tTdsl5b55qNZGmCVKMNce97ncnzDrA2JHz7nxqP3iHoNvUAzQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "b4e15404-906e-4b15-a5af-e207d121c8ef",
+                            SecurityStamp = "06c73466-d040-4e7b-8200-8996242f2262",
                             TwoFactorEnabled = false,
                             UserName = "admin@gmail.com"
                         },
@@ -331,14 +349,14 @@ namespace Asm1670.Migrations
                         {
                             Id = "2",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "dc6e2f3a-6eff-4a38-8bc3-413c22594e86",
+                            ConcurrencyStamp = "0c292d80-b4e4-4aaa-84ce-ebf4d369f5b7",
                             Email = "customer@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedUserName = "customer@gmail.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAEO3Hh5C22SR107W5VAWrwWEAYAVq0dx5+xsptf+rquWN+SZDPZpaisXRmj1XLc9d7g==",
+                            PasswordHash = "AQAAAAEAACcQAAAAED8CHlTGUmcagwDudXViXq/F2ZVykeE9NYWHRkmdcJDp8p5r4fBXRZSKXCknD2RREg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "b1eb2808-80bf-4b03-994b-2ad4f61c1ff9",
+                            SecurityStamp = "f332ebd0-d165-48ec-bd01-e0c861a2b873",
                             TwoFactorEnabled = false,
                             UserName = "customer@gmail.com"
                         },
@@ -346,14 +364,14 @@ namespace Asm1670.Migrations
                         {
                             Id = "3",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "f01abd29-3bb0-4a44-90c2-fedf16592140",
+                            ConcurrencyStamp = "e316157e-3104-4566-96d7-91b2998ca199",
                             Email = "storeowner@gmail.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedUserName = "storeowner@gmail.com",
-                            PasswordHash = "AQAAAAEAACcQAAAAEPmo/FbVHv84KoYJi8Y4XNjcvY00yMzYOTzCI5f9VcerhxaMrzZLY4maoHwDonLE8w==",
+                            PasswordHash = "AQAAAAEAACcQAAAAEDZBdnqSulTKJPFQPnxJbBGEaVJXrB8YA2Geag7XLVMTS990/srzjWGan+haSOk+Ig==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "a5dce8c9-fee9-414e-b43a-10e28d2c9bc2",
+                            SecurityStamp = "13c13d10-3e77-473e-b999-56756c9a3d9d",
                             TwoFactorEnabled = false,
                             UserName = "storeowner@gmail.com"
                         });

@@ -122,9 +122,9 @@ namespace Asm1670.Data
         private void SeedCart(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Cart>().HasData(
-                new Cart { Id = 1, Email = "cart@gmail.com", OrderPrice = 12, OrderQuantity = 5, OrderDate = DateTime.Now},
-                new Cart { Id = 2, Email = "cart@gmail.com", OrderPrice = 12, OrderQuantity = 5, OrderDate = DateTime.Now },
-                new Cart { Id = 3, Email = "cart@gmail.com", OrderPrice = 12, OrderQuantity = 5, OrderDate = DateTime.Now }
+                new Cart { Id = 1, Email = "cart@gmail.com", OrderPrice = 12, OrderQuantity = 5, OrderDate = DateTime.Now, BookId = 1},
+                new Cart { Id = 2, Email = "cart@gmail.com", OrderPrice = 12, OrderQuantity = 5, OrderDate = DateTime.Now,BookId=2 },
+                new Cart { Id = 3, Email = "cart@gmail.com", OrderPrice = 12, OrderQuantity = 5, OrderDate = DateTime.Now,BookId=3 }
                 );
         }
         

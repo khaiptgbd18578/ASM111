@@ -208,8 +208,11 @@ namespace Asm1670.Migrations
                 {
                     Id = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Amount = table.Column<int>(nullable: false),
-                    BookId = table.Column<int>(nullable: false)
+                    BookId = table.Column<int>(nullable: false),
+                    Email = table.Column<string>(nullable: true),
+                    OrderQuantity = table.Column<int>(nullable: false),
+                    OrderPrice = table.Column<double>(nullable: false),
+                    OrderDate = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
@@ -227,9 +230,9 @@ namespace Asm1670.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "1", "b2dc12f7-bc4f-4b30-b098-d0e9283a398b", "Admin", "Admin" },
-                    { "2", "e60ca2b4-8218-4f35-adf1-8ee86bb3f844", "Customer", "Customer" },
-                    { "3", "e3f2b5d6-bbc5-47ae-9374-f7fed4d61e2d", "Store Owner", "Store Owner" }
+                    { "1", "37f36d86-1c2a-444f-87bc-8639f302150b", "Admin", "Admin" },
+                    { "2", "87da4c73-64b8-4d9f-9b61-00d2f0562ca2", "Customer", "Customer" },
+                    { "3", "be16d06d-e619-40e6-bc0e-19923dd15944", "Store Owner", "Store Owner" }
                 });
 
             migrationBuilder.InsertData(
@@ -237,9 +240,9 @@ namespace Asm1670.Migrations
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
                 values: new object[,]
                 {
-                    { "1", 0, "4beed019-fa39-4812-944f-d3bf4193f74d", "admin@gmail.com", false, false, null, null, "admin@gmail.com", "AQAAAAEAACcQAAAAEEG+ka15yzXEFvxnf1D5aQJef8nmBsPsudrXtqtQ1JHWnB6kGdbmaGJsSRI11TXKog==", null, false, "b4e15404-906e-4b15-a5af-e207d121c8ef", false, "admin@gmail.com" },
-                    { "2", 0, "dc6e2f3a-6eff-4a38-8bc3-413c22594e86", "customer@gmail.com", false, false, null, null, "customer@gmail.com", "AQAAAAEAACcQAAAAEO3Hh5C22SR107W5VAWrwWEAYAVq0dx5+xsptf+rquWN+SZDPZpaisXRmj1XLc9d7g==", null, false, "b1eb2808-80bf-4b03-994b-2ad4f61c1ff9", false, "customer@gmail.com" },
-                    { "3", 0, "f01abd29-3bb0-4a44-90c2-fedf16592140", "storeowner@gmail.com", false, false, null, null, "storeowner@gmail.com", "AQAAAAEAACcQAAAAEPmo/FbVHv84KoYJi8Y4XNjcvY00yMzYOTzCI5f9VcerhxaMrzZLY4maoHwDonLE8w==", null, false, "a5dce8c9-fee9-414e-b43a-10e28d2c9bc2", false, "storeowner@gmail.com" }
+                    { "1", 0, "d6908617-fe01-42c9-bb97-8364d8a85cd1", "admin@gmail.com", false, false, null, null, "admin@gmail.com", "AQAAAAEAACcQAAAAELbV0QO4lMMk3mza7tTdsl5b55qNZGmCVKMNce97ncnzDrA2JHz7nxqP3iHoNvUAzQ==", null, false, "06c73466-d040-4e7b-8200-8996242f2262", false, "admin@gmail.com" },
+                    { "2", 0, "0c292d80-b4e4-4aaa-84ce-ebf4d369f5b7", "customer@gmail.com", false, false, null, null, "customer@gmail.com", "AQAAAAEAACcQAAAAED8CHlTGUmcagwDudXViXq/F2ZVykeE9NYWHRkmdcJDp8p5r4fBXRZSKXCknD2RREg==", null, false, "f332ebd0-d165-48ec-bd01-e0c861a2b873", false, "customer@gmail.com" },
+                    { "3", 0, "e316157e-3104-4566-96d7-91b2998ca199", "storeowner@gmail.com", false, false, null, null, "storeowner@gmail.com", "AQAAAAEAACcQAAAAEDZBdnqSulTKJPFQPnxJbBGEaVJXrB8YA2Geag7XLVMTS990/srzjWGan+haSOk+Ig==", null, false, "13c13d10-3e77-473e-b999-56756c9a3d9d", false, "storeowner@gmail.com" }
                 });
 
             migrationBuilder.InsertData(
@@ -274,18 +277,18 @@ namespace Asm1670.Migrations
 
             migrationBuilder.InsertData(
                 table: "Cart",
-                columns: new[] { "Id", "Amount", "BookId" },
-                values: new object[] { 1, 3, 1 });
+                columns: new[] { "Id", "BookId", "Email", "OrderDate", "OrderPrice", "OrderQuantity" },
+                values: new object[] { 1, 1, "cart@gmail.com", new DateTime(2022, 8, 20, 21, 8, 33, 386, DateTimeKind.Local).AddTicks(4806), 12.0, 5 });
 
             migrationBuilder.InsertData(
                 table: "Cart",
-                columns: new[] { "Id", "Amount", "BookId" },
-                values: new object[] { 2, 3, 2 });
+                columns: new[] { "Id", "BookId", "Email", "OrderDate", "OrderPrice", "OrderQuantity" },
+                values: new object[] { 2, 2, "cart@gmail.com", new DateTime(2022, 8, 20, 21, 8, 33, 387, DateTimeKind.Local).AddTicks(2161), 12.0, 5 });
 
             migrationBuilder.InsertData(
                 table: "Cart",
-                columns: new[] { "Id", "Amount", "BookId" },
-                values: new object[] { 3, 3, 3 });
+                columns: new[] { "Id", "BookId", "Email", "OrderDate", "OrderPrice", "OrderQuantity" },
+                values: new object[] { 3, 3, "cart@gmail.com", new DateTime(2022, 8, 20, 21, 8, 33, 387, DateTimeKind.Local).AddTicks(2198), 12.0, 5 });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
