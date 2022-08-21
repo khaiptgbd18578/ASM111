@@ -15,7 +15,6 @@ namespace Asm1670.Data
         {
         }
         public DbSet<Cart> Cart { get; set; }
-        public DbSet<Customer> Customer { get; set; }
         public DbSet<Book> Book { get; set; }
         public DbSet<Category> category { get; set; }
         public DbSet<Request> Request { get; set; }
@@ -25,7 +24,6 @@ namespace Asm1670.Data
             base.OnModelCreating(builder);
             SeedCategory(builder);
             SeedCart(builder);
-            SeedCustomer(builder);
             SeedBook(builder);
             SeedUser(builder);
             SeedRole(builder);
@@ -124,25 +122,17 @@ namespace Asm1670.Data
         private void SeedCart(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Cart>().HasData(
-                new Cart { Id = 1, Amount = 3 },
-                new Cart { Id = 2, Amount = 3 },
-                new Cart { Id = 3, Amount = 3 }
+                new Cart { Id = 1, Email = "cart@gmail.com", OrderPrice = 12, OrderQuantity = 2,OrderDate = DateTime.Now },
+                new Cart { Id = 2, Email = "cart@gmail.com", OrderPrice = 12, OrderQuantity = 2, OrderDate = DateTime.Now },
+                new Cart { Id = 3, Email = "cart@gmail.com", OrderPrice = 12, OrderQuantity = 2, OrderDate = DateTime.Now }
                 );
-        }
-        private void SeedCustomer(ModelBuilder modelBuilder)
-        {
-            modelBuilder.Entity<Customer>().HasData(
-                new Customer { Id = 1, Name = "Bui Duc Cuong", Email = "cuongbuiqqq", Address = "Hai Duong" },
-                new Customer { Id = 2, Name = "Bui Duc Cuong", Email = "cuongbuiqqq", Address = "Hai Duong" },
-                new Customer { Id = 3, Name = "Bui Duc Cuong", Email = "cuongbuiqqq", Address = "Hai Duong" }
-            );
         }
         private void SeedBook(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Book>().HasData(
-                new Book { Id = 1, Title = "Doraemon", Price = 13000, CustomerId = 1, CartId = 1 },
-                new Book { Id = 2, Title = "Doraemon", Price = 13000, CustomerId = 2, CartId = 2 },
-                new Book { Id = 3, Title = "Doraemon", Price = 13000, CustomerId = 3, CartId = 3 }
+                new Book { Id = 1, Title = "Doraemon", Price = 13000, Quantity = 4, Image = "", },
+                new Book { Id = 2, Title = "Doraemon", Price = 13000, Quantity = 5, Image = "",  },
+                new Book { Id = 3, Title = "Doraemon", Price = 13000,  Image = "",Quantity = 5 }
             );
         }
         private void SeedCategory(ModelBuilder builder)

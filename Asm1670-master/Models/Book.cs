@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations.Schema;
+﻿using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Asm1670.Models
 {
@@ -9,10 +11,9 @@ namespace Asm1670.Models
         public float Price { get; set; }
         public int Quantity { get; set; }
         public string Image { get; set; }
-        public int CustomerId { get; set; }
-        public int CartId { get; set; }
+        public int CategoryId { get; set; }
         public Category Category { get; set; }
-        public Cart Cart { get; set; }
-        public Customer Customer { get; set; }
+        public ICollection<Cart> Carts { get; set; }
+
     }
 }

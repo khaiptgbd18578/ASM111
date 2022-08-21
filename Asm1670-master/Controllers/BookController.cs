@@ -32,11 +32,8 @@ namespace AsmDotNet.Controllers
         [Authorize(Roles = "Customer, Store Owner, Admin")]
         public IActionResult Detail(int? id)
         {
-            if (id == null)
-                return NotFound();
             var book = context.Book
-                .Include(e => e.Cart)
-                .Include(e => e.Customer)
+                .Include(e => e.Category)
                 .FirstOrDefault(m => m.Id == id);
             return View(book);
         }
@@ -69,9 +66,7 @@ namespace AsmDotNet.Controllers
         {
 
             var cart = context.Cart.ToList();
-            var customer = context.Customer.ToList();
             ViewBag.Cart = cart;
-            ViewBag.Customer = customer;
             return View();
         }
         [HttpPost]
@@ -102,9 +97,6 @@ namespace AsmDotNet.Controllers
                 return NotFound();
             }
             var author = context.Cart.ToList();
-            var customer = context.Customer.ToList();
-            ViewBag.Author = author;
-            ViewBag.Customer = customer;
             return View(book);
         }
         [Authorize(Roles = "Store Owner, Admin")]
